@@ -3,9 +3,9 @@ const path = require('path');
 
 const copyDir = async () => {
     try {
+        await fsPromises.mkdir(path.join(__dirname, 'files-copy'), { recursive: true });
         const filesCopy = await fsPromises.readdir(path.join(__dirname, 'files-copy'));
         const files = await fsPromises.readdir(path.join(__dirname, 'files'));
-        await fsPromises.mkdir(path.join(__dirname, 'files-copy'), { recursive: true });
 
         if (filesCopy) {
             for (let el of filesCopy) {
